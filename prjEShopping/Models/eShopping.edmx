@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tEmployeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAdmin">
+          <Key>
+            <PropertyRef Name="fUId" />
+          </Key>
+          <Property Name="fUId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fPwd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="fCategoryId" />
+          </Key>
+          <Property Name="fCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fCategoryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tMember">
+          <Key>
+            <PropertyRef Name="fUId" />
+          </Key>
+          <Property Name="fUId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fPwd" Type="nvarchar" MaxLength="50" />
+          <Property Name="fName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="salt" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="fOrderId" />
+          </Key>
+          <Property Name="fOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fUId" Type="nvarchar" MaxLength="50" />
+          <Property Name="fReceiver" Type="nvarchar" MaxLength="50" />
+          <Property Name="fReceiverPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fReceiverAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="fOrderDate" Type="datetime" />
+          <Property Name="fOrderState" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tOrderDetails">
+          <Key>
+            <PropertyRef Name="fOrderDetailsId" />
+          </Key>
+          <Property Name="fOrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fOrderId" Type="int" />
+          <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+          <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+          <Property Name="fPrice" Type="int" />
+          <Property Name="fQty" Type="int" />
+        </EntityType>
+        <EntityType Name="tProduct">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fCategoryId" Type="int" />
+          <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+          <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+          <Property Name="fPrice" Type="int" />
+          <Property Name="fImg" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tShoppingCar">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fUId" Type="nvarchar" MaxLength="50" />
+          <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+          <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+          <Property Name="fPrice" Type="int" />
+          <Property Name="fQty" Type="int" />
+        </EntityType>
+        <EntityContainer Name="tEmployeeModelStoreContainer">
+          <EntitySet Name="tAdmin" EntityType="Self.tAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCategory" EntityType="Self.tCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrderDetails" EntityType="Self.tOrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tShoppingCar" EntityType="Self.tShoppingCar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tEmployeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tAdmin">
+          <Key>
+            <PropertyRef Name="fUId" />
+          </Key>
+          <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="fCategoryId" />
+          </Key>
+          <Property Name="fCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="fOrderId" />
+          </Key>
+          <Property Name="fOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fReceiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fReceiverPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fReceiverAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="fOrderState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tOrderDetails">
+          <Key>
+            <PropertyRef Name="fOrderDetailsId" />
+          </Key>
+          <Property Name="fOrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fOrderId" Type="Int32" />
+          <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fPrice" Type="Int32" />
+          <Property Name="fQty" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tProduct">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fCategoryId" Type="Int32" />
+          <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fPrice" Type="Int32" />
+          <Property Name="fImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tShoppingCar">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fPrice" Type="Int32" />
+          <Property Name="fQty" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="tEmployeeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAdmin" EntityType="Self.tAdmin" />
+          <EntitySet Name="tCategory" EntityType="Self.tCategory" />
+          <EntitySet Name="tOrder" EntityType="Self.tOrder" />
+          <EntitySet Name="tOrderDetails" EntityType="Self.tOrderDetails" />
+          <EntitySet Name="tProduct" EntityType="Self.tProduct" />
+          <EntitySet Name="tShoppingCar" EntityType="Self.tShoppingCar" />
+          <EntitySet Name="tMember" EntityType="tEmployeeModel.tMember" />
+        </EntityContainer>
+        <EntityType Name="tMember">
+          <Key>
+            <PropertyRef Name="fUId" />
+          </Key>
+          <Property Name="fUId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tEmployeeModelStoreContainer" CdmEntityContainer="tEmployeeEntities">
+          <EntitySetMapping Name="tAdmin">
+            <EntityTypeMapping TypeName="tEmployeeModel.tAdmin">
+              <MappingFragment StoreEntitySet="tAdmin">
+                <ScalarProperty Name="fUId" ColumnName="fUId" />
+                <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCategory">
+            <EntityTypeMapping TypeName="tEmployeeModel.tCategory">
+              <MappingFragment StoreEntitySet="tCategory">
+                <ScalarProperty Name="fCategoryId" ColumnName="fCategoryId" />
+                <ScalarProperty Name="fCategoryName" ColumnName="fCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrder">
+            <EntityTypeMapping TypeName="tEmployeeModel.tOrder">
+              <MappingFragment StoreEntitySet="tOrder">
+                <ScalarProperty Name="fOrderId" ColumnName="fOrderId" />
+                <ScalarProperty Name="fUId" ColumnName="fUId" />
+                <ScalarProperty Name="fReceiver" ColumnName="fReceiver" />
+                <ScalarProperty Name="fReceiverPhone" ColumnName="fReceiverPhone" />
+                <ScalarProperty Name="fReceiverAddress" ColumnName="fReceiverAddress" />
+                <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
+                <ScalarProperty Name="fOrderState" ColumnName="fOrderState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrderDetails">
+            <EntityTypeMapping TypeName="tEmployeeModel.tOrderDetails">
+              <MappingFragment StoreEntitySet="tOrderDetails">
+                <ScalarProperty Name="fOrderDetailsId" ColumnName="fOrderDetailsId" />
+                <ScalarProperty Name="fOrderId" ColumnName="fOrderId" />
+                <ScalarProperty Name="fPId" ColumnName="fPId" />
+                <ScalarProperty Name="fPName" ColumnName="fPName" />
+                <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+                <ScalarProperty Name="fQty" ColumnName="fQty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProduct">
+            <EntityTypeMapping TypeName="tEmployeeModel.tProduct">
+              <MappingFragment StoreEntitySet="tProduct">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fCategoryId" ColumnName="fCategoryId" />
+                <ScalarProperty Name="fPId" ColumnName="fPId" />
+                <ScalarProperty Name="fPName" ColumnName="fPName" />
+                <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+                <ScalarProperty Name="fImg" ColumnName="fImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tShoppingCar">
+            <EntityTypeMapping TypeName="tEmployeeModel.tShoppingCar">
+              <MappingFragment StoreEntitySet="tShoppingCar">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fUId" ColumnName="fUId" />
+                <ScalarProperty Name="fPId" ColumnName="fPId" />
+                <ScalarProperty Name="fPName" ColumnName="fPName" />
+                <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+                <ScalarProperty Name="fQty" ColumnName="fQty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMember">
+            <EntityTypeMapping TypeName="tEmployeeModel.tMember">
+              <MappingFragment StoreEntitySet="tMember">
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+                <ScalarProperty Name="fUId" ColumnName="fUId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

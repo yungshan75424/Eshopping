@@ -1,0 +1,74 @@
+﻿@model IEnumerable<prjEShopping.Models.tProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*  <th>
+            @Html.DisplayNameFor(model => model.fCategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.fPName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice) 元
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fImg)
+        </th>
+        <th>
+            購買
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    @* <td>
+            @Html.DisplayFor(modelItem => item.fCategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPId)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.fPName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fPrice)
+    </td>
+    <td>
+        @if (item.fImg == "")
+        {
+            <img src="~/Images/question.png" style="width:210px;height:140px;" />
+        }
+        else
+        {
+            <img src="~/Images/@item.fImg" style="width:210px;" />
+        }
+
+    </td>
+    <td>
+        <div class="caption">
+            <p> <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">放入購物車</a></p>
+        </div>
+    </td>
+
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.fId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.fId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.fId })
+        </td>*@
+</tr>
+}
+
+</table>

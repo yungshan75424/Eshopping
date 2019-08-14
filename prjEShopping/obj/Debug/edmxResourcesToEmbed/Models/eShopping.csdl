@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tEmployeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tAdmin">
+    <Key>
+      <PropertyRef Name="fUId" />
+    </Key>
+    <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tCategory">
+    <Key>
+      <PropertyRef Name="fCategoryId" />
+    </Key>
+    <Property Name="fCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="fOrderId" />
+    </Key>
+    <Property Name="fOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fReceiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fReceiverPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fReceiverAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fOrderDate" Type="DateTime" Precision="3" />
+    <Property Name="fOrderState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tOrderDetails">
+    <Key>
+      <PropertyRef Name="fOrderDetailsId" />
+    </Key>
+    <Property Name="fOrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fOrderId" Type="Int32" />
+    <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" />
+    <Property Name="fQty" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tProduct">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fCategoryId" Type="Int32" />
+    <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" />
+    <Property Name="fImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tShoppingCar">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" />
+    <Property Name="fQty" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="tEmployeeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tAdmin" EntityType="Self.tAdmin" />
+    <EntitySet Name="tCategory" EntityType="Self.tCategory" />
+    <EntitySet Name="tOrder" EntityType="Self.tOrder" />
+    <EntitySet Name="tOrderDetails" EntityType="Self.tOrderDetails" />
+    <EntitySet Name="tProduct" EntityType="Self.tProduct" />
+    <EntitySet Name="tShoppingCar" EntityType="Self.tShoppingCar" />
+    <EntitySet Name="tMember" EntityType="tEmployeeModel.tMember" />
+  </EntityContainer>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="fUId" />
+    </Key>
+    <Property Name="fUId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

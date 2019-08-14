@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tEmployeeModelStoreContainer" CdmEntityContainer="tEmployeeEntities">
+    <EntitySetMapping Name="tAdmin">
+      <EntityTypeMapping TypeName="tEmployeeModel.tAdmin">
+        <MappingFragment StoreEntitySet="tAdmin">
+          <ScalarProperty Name="fUId" ColumnName="fUId" />
+          <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCategory">
+      <EntityTypeMapping TypeName="tEmployeeModel.tCategory">
+        <MappingFragment StoreEntitySet="tCategory">
+          <ScalarProperty Name="fCategoryId" ColumnName="fCategoryId" />
+          <ScalarProperty Name="fCategoryName" ColumnName="fCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrder">
+      <EntityTypeMapping TypeName="tEmployeeModel.tOrder">
+        <MappingFragment StoreEntitySet="tOrder">
+          <ScalarProperty Name="fOrderId" ColumnName="fOrderId" />
+          <ScalarProperty Name="fUId" ColumnName="fUId" />
+          <ScalarProperty Name="fReceiver" ColumnName="fReceiver" />
+          <ScalarProperty Name="fReceiverPhone" ColumnName="fReceiverPhone" />
+          <ScalarProperty Name="fReceiverAddress" ColumnName="fReceiverAddress" />
+          <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
+          <ScalarProperty Name="fOrderState" ColumnName="fOrderState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrderDetails">
+      <EntityTypeMapping TypeName="tEmployeeModel.tOrderDetails">
+        <MappingFragment StoreEntitySet="tOrderDetails">
+          <ScalarProperty Name="fOrderDetailsId" ColumnName="fOrderDetailsId" />
+          <ScalarProperty Name="fOrderId" ColumnName="fOrderId" />
+          <ScalarProperty Name="fPId" ColumnName="fPId" />
+          <ScalarProperty Name="fPName" ColumnName="fPName" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fQty" ColumnName="fQty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProduct">
+      <EntityTypeMapping TypeName="tEmployeeModel.tProduct">
+        <MappingFragment StoreEntitySet="tProduct">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fCategoryId" ColumnName="fCategoryId" />
+          <ScalarProperty Name="fPId" ColumnName="fPId" />
+          <ScalarProperty Name="fPName" ColumnName="fPName" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fImg" ColumnName="fImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tShoppingCar">
+      <EntityTypeMapping TypeName="tEmployeeModel.tShoppingCar">
+        <MappingFragment StoreEntitySet="tShoppingCar">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUId" ColumnName="fUId" />
+          <ScalarProperty Name="fPId" ColumnName="fPId" />
+          <ScalarProperty Name="fPName" ColumnName="fPName" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fQty" ColumnName="fQty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tMember">
+      <EntityTypeMapping TypeName="tEmployeeModel.tMember">
+        <MappingFragment StoreEntitySet="tMember">
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+          <ScalarProperty Name="fUId" ColumnName="fUId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

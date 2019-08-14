@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tEmployeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tAdmin">
+    <Key>
+      <PropertyRef Name="fUId" />
+    </Key>
+    <Property Name="fUId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fPwd" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tCategory">
+    <Key>
+      <PropertyRef Name="fCategoryId" />
+    </Key>
+    <Property Name="fCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fCategoryName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="fUId" />
+    </Key>
+    <Property Name="fUId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fPwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="fName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="salt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="fOrderId" />
+    </Key>
+    <Property Name="fOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fUId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fReceiver" Type="nvarchar" MaxLength="50" />
+    <Property Name="fReceiverPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="fReceiverAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="fOrderDate" Type="datetime" />
+    <Property Name="fOrderState" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tOrderDetails">
+    <Key>
+      <PropertyRef Name="fOrderDetailsId" />
+    </Key>
+    <Property Name="fOrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fOrderId" Type="int" />
+    <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+    <Property Name="fPrice" Type="int" />
+    <Property Name="fQty" Type="int" />
+  </EntityType>
+  <EntityType Name="tProduct">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fCategoryId" Type="int" />
+    <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+    <Property Name="fPrice" Type="int" />
+    <Property Name="fImg" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tShoppingCar">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fUId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fPId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fPName" Type="nvarchar" MaxLength="200" />
+    <Property Name="fPrice" Type="int" />
+    <Property Name="fQty" Type="int" />
+  </EntityType>
+  <EntityContainer Name="tEmployeeModelStoreContainer">
+    <EntitySet Name="tAdmin" EntityType="Self.tAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCategory" EntityType="Self.tCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tOrderDetails" EntityType="Self.tOrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tShoppingCar" EntityType="Self.tShoppingCar" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
