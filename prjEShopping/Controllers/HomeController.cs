@@ -14,7 +14,7 @@ namespace prjEShopping.Controllers
 
         tEmployeeEntities db = new tEmployeeEntities();
         // GET: Home
-        [Authorize]
+        
         public ActionResult Index()
         {
             string uid = User.Identity.Name;
