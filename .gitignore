@@ -1,0 +1,7 @@
+# 檔案名稱 .gitignore
+
+# 忽略 檔案
+packages/
+.vs/
+prjShopping/bin/
+prjShopping/obj/
