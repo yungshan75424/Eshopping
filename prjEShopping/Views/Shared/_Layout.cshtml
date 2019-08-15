@@ -23,14 +23,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("會員註冊", "Register", "Home")</li>
                     <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
-                    @if (ViewBag.memberislogin == 0)
-                    {
+                 
                         <li>
                                                
                          @Html.ActionLink("修改會員資料", "MemberEdit", "Home")
                             
                         </li>
-                     }
+                     
                 </ul>
             </div>
         </div>
