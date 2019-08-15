@@ -112,7 +112,14 @@ namespace prjEShopping.Controllers
             string uid = User.Identity.Name;
             var member = db.tMember.Where(m => m.fUId == uid).FirstOrDefault();
             member.fName = vMember.fName;
-            member.fPwd = vMember.fPwd;
+            //member.fPwd = vMember.fPwd;
+            string Password = vMember.fPwd;
+            string salt = member.salt;
+            string dbPassword = member.fPwd;
+            byte[] passwordAndSaltBytes = System.Text.Encoding.UTF8.GetBytes(Password + salt);
+            byte[] hashBytes = new System.Security.Cryptography.SHA256Managed().ComputeHash(passwordAndSaltBytes);
+            string hashString = Convert.ToBase64String(hashBytes);
+            member.fPwd = hashString;
             member.fEmail = vMember.fEmail;
             db.SaveChanges();
             ViewBag.Msg = "會員基本資訊修改完成！";
