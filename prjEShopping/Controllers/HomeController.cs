@@ -55,6 +55,12 @@ namespace prjEShopping.Controllers
             return View();
         }
 
+        public ActionResult Product(int fCategoryId)
+        {
 
+
+            var product = db.tProduct.Where(m => m.fCategoryId == fCategoryId).ToList();
+            return View(product);
+        }
     }
 }

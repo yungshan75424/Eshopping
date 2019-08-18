@@ -22,7 +22,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                       <li class="dropdown">
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             產品資料
                             <span class="caret"></span>
@@ -36,18 +36,20 @@
                                 }
                             }
                         </ul>
-                       </li>
-                    
-                         <li>@Html.ActionLink("會員註冊", "Register", "Member")</li>
-                        <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
-                        @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
-                        {
-                            <li>@Html.ActionLink("修改會員資料", "MemberEdit", "Member")</li>
-                            <li>@Html.ActionLink("登出系統", "Logout", "Member")</li>
-                        }
+                    </li>
+
+                    <li>@Html.ActionLink("會員註冊", "Register", "Member")</li>
+                    <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
+                    @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
+                    {
+                        <li>@Html.ActionLink("修改會員資料", "MemberEdit", "Member")</li>
+                        <li>@Html.ActionLink("購物車資訊", "ShoppingCarList", "Member")</li>
+                        <li>@Html.ActionLink("訂單資訊", "OrderList", "Member")</li>
+                        <li>@Html.ActionLink("登出系統", "Logout", "Member")</li>
+                    }
 
 
-                    </ul>
+                </ul>
             </div>
         </div>
     </div>
