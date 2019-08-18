@@ -76,7 +76,12 @@ namespace prjEShopping.Controllers
             ViewBag.Msg = "會員基本資訊修改完成！";
             return View();
         }
-
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Home");
+        }
     }
 
 }
