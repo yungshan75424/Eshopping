@@ -9,11 +9,8 @@ using prjEShopping.Models;
 namespace prjEShopping.Controllers
 {
     
-    public class MemberController : Controller
+    public class MemberController : BaseController
     {
-
-        tEmployeeEntities db = new tEmployeeEntities();
-        // GET: Home
         public ActionResult Register()
         {
             return View();
@@ -48,7 +45,6 @@ namespace prjEShopping.Controllers
         // GET: Member
         public ActionResult MemberEdit()
         {
-
             string uid = User.Identity.Name;
 
             var member = db.tMember.Where(m => m.fUId == uid).FirstOrDefault();
@@ -59,7 +55,6 @@ namespace prjEShopping.Controllers
         [HttpPost]
         public ActionResult MemberEdit(tMember vMember)
         {
-
             string uid = User.Identity.Name;
             var member = db.tMember.Where(m => m.fUId == uid).FirstOrDefault();
             member.fName = vMember.fName;
@@ -81,6 +76,18 @@ namespace prjEShopping.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
+        }
+        [Authorize]
+        public ActionResult ProductList(int fCategoryId)
+        {
+            var ProductList = db.tProduct.Where(m => m.fCategoryId == fCategoryId).ToList();
+            return View(ProductList);
+        }
+        [Authorize]
+        public ActionResult Product(int fCategoryId)
+        {
+            var product = db.tProduct.Where(m => m.fCategoryId == fCategoryId).ToList();
+            return View(product);
         }
     }
 

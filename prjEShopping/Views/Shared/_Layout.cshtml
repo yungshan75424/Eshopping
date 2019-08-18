@@ -21,16 +21,33 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("會員註冊", "Register", "Home")</li>
-                    <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
-                    @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
-                    {
-                        <li>@Html.ActionLink("修改會員資料", "MemberEdit", "Home")</li>
-                        <li>@Html.ActionLink("登出系統", "Logout", "Member")</li>
-                    }
+
+                       <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            產品資料
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (ViewBag.Category != null)
+                            {
+                                foreach (var item in ViewBag.Category)
+                                {
+                                    <li><a href="@Url.Action("Product")?fCategoryId=@item.fCategoryId">@item.fCategoryName</a></li>
+                                }
+                            }
+                        </ul>
+                       </li>
+                    
+                         <li>@Html.ActionLink("會員註冊", "Register", "Member")</li>
+                        <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
+                        @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
+                        {
+                            <li>@Html.ActionLink("修改會員資料", "MemberEdit", "Member")</li>
+                            <li>@Html.ActionLink("登出系統", "Logout", "Member")</li>
+                        }
 
 
-                </ul>
+                    </ul>
             </div>
         </div>
     </div>

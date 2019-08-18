@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         @*  <th>
@@ -62,7 +59,7 @@
 <td>
     <div class="caption">
         <p>
-            <a href="@Url.Action("ShoppingCar")?fPId=@item.fPId"
+            <a href="@Url.Action("ShoppingCar","Member")?fPId=@item.fPId"
                class="btn btn-success">放入購物車</a>
         </p>
     </div>
