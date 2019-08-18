@@ -225,6 +225,9 @@
     <Content Include="Views\Member\MemberEdit.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Member\Product.cshtml" />
+    <Content Include="Views\Member\ShoppingCarList.cshtml" />
+    <Content Include="Views\Member\OrderList.cshtml" />
+    <Content Include="Views\Member\OrderDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

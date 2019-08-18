@@ -89,6 +89,127 @@ namespace prjEShopping.Controllers
             var product = db.tProduct.Where(m => m.fCategoryId == fCategoryId).ToList();
             return View(product);
         }
+        [Authorize]
+        public ActionResult ShoppingCar(string fPid)
+        {
+            string uid = User.Identity.Name;
+            var ShoppingCar = db.tShoppingCar.Where(m=>m.fUId==uid &&m.fPId==fPid).FirstOrDefault();
+            if(ShoppingCar != null)
+            {
+                ShoppingCar.fQty += 1;
+            }
+            else
+            {
+                var product = db.tProduct.Where(m => m.fPId == fPid).FirstOrDefault();
+                tShoppingCar newCar = new tShoppingCar();
+                newCar.fUId = uid;
+                newCar.fPId = fPid;
+                newCar.fPName = product.fPName;
+                newCar.fPrice = product.fPrice;
+                newCar.fQty = 1;
+                db.tShoppingCar.Add(newCar);
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("ShoppingCarList");
+        }
+        [Authorize]
+        public ActionResult ShoppingCarList()
+        {
+            string uid = User.Identity.Name;
+            var shoppingCar = db.tShoppingCar.Where(m => m.fUId == uid).ToList();
+            return View(shoppingCar);
+        }
+        [Authorize]
+        public ActionResult ShoppingCarAddQty(int fId)
+        {
+            string uid = User.Identity.Name;
+            var ShoppingCar = db.tShoppingCar.Where(m => m.fId==fId).FirstOrDefault();
+            ShoppingCar.fQty += 1;
+            db.SaveChanges();
+            return RedirectToAction("ShoppingCarList");
+        }
+
+
+        [Authorize]
+        public ActionResult ShoppingCarSubQty(int fId)
+        {
+            string uid = User.Identity.Name;
+            var ShoppingCar = db.tShoppingCar.Where(m => m.fId == fId).FirstOrDefault();
+            ShoppingCar.fQty -= 1;
+            if(ShoppingCar.fQty==0)
+            {
+                db.tShoppingCar.Remove(ShoppingCar);
+            }
+            db.SaveChanges();
+            return RedirectToAction("ShoppingCarList");
+        }
+        [Authorize]
+        public ActionResult ShoppingCarDelete(int fId)
+        {
+            string uid = User.Identity.Name;
+            var ShoppingCar = db.tShoppingCar.Where(m => m.fId == fId).FirstOrDefault();
+
+            db.tShoppingCar.Remove(ShoppingCar);
+            
+            db.SaveChanges();
+            return RedirectToAction("ShoppingCarList");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Order(tOrder vOrder)
+        {
+            string uid = User.Identity.Name;
+
+            var order = new tOrder
+            {
+                fReceiverAddress = vOrder.fReceiverAddress,
+                fOrderDate = DateTime.Now,
+                fOrderState = "未出貨",
+                fReceiver = vOrder.fReceiver,
+                fReceiverPhone = vOrder.fReceiverPhone,
+                fUId = uid
+            };
+
+            db.tOrder.Add(order);
+            db.SaveChanges();
+
+            var shoppings = db.tShoppingCar.Where(e => e.fUId == uid).ToList();
+
+            var details = shoppings.Select(e =>
+              new tOrderDetails
+              {
+                  fOrderId = order.fOrderId,
+                  fPId = e.fPId,
+                  fPName = e.fPName,
+                  fPrice = e.fPrice,
+                  fQty = e.fQty
+              }).ToList();
+
+            db.tOrderDetails.AddRange(details);
+            db.tShoppingCar.RemoveRange(shoppings);
+
+            db.SaveChanges();
+
+            return RedirectToAction("OrderList");
+
+        }
+        [Authorize]
+        public ActionResult OrderList()
+        {
+            string uid = User.Identity.Name;
+            var order = db.tOrder.Where(m => m.fUId == uid).OrderByDescending(m => m.fOrderId).ToList();
+            return View(order);
+
+        }
+
+        [Authorize]
+        public ActionResult OrderDetails(int fOrderId)
+        {
+            var order = db.tOrderDetails.Where(m => m.fOrderId == fOrderId).ToList();
+            return View(order);
+        }
     }
 
 }
