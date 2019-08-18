@@ -17,15 +17,6 @@ namespace prjEShopping.Controllers
         
         public ActionResult Index()
         {
-            string uid = User.Identity.Name;
-            if (uid != null)
-            {
-                ViewBag.memberislogin = 1;
-            }
-            else
-            {
-                ViewBag.memberislogin = 0;
-            }
             var ProductList = db.tProduct.OrderByDescending(m => m.fId).Take(8).ToList();
             return View(ProductList);
         }
