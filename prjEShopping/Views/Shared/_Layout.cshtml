@@ -21,18 +21,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("會員註冊", "Register", "Home")</li>
+                    <li>@Html.ActionLink("會員註冊", "Register", "Member")</li>
                     <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
-                    @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
-                    {
+                 
                         <li>
-
-                            @Html.ActionLink("修改會員資料", "MemberEdit", "Home")
-
+                                               
+                         @Html.ActionLink("修改會員資料", "MemberEdit", "Member")
+                            
                         </li>
-                    }
-
-
+                     
                 </ul>
             </div>
         </div>
