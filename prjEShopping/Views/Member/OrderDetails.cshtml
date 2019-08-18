@@ -1,0 +1,55 @@
+﻿@model IEnumerable<prjEShopping.Models.tOrderDetails>
+
+
+
+<h2>訂單明細</h2>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fOrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQty)
+        </th>
+        <th>
+            小計
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fOrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fQty)
+            </td>
+            <td>
+                @(item.fPrice * item.fQty)
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<prjEShopping.Models.tShoppingCar>
+
+@{
+    ViewBag.Title = "購物車";
+}
+
+<h2>購物車</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fPId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQty)
+        </th>
+        <th>
+            小計
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.fPId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fQty)
+            </td>
+            <td>
+                @(item.fPrice * item.fQty)
+            </td>
+            <td>
+
+                <a href="@Url.Action("ShoppingCarAddQty")?fId=@item.fId" class="btn btn-info">+1</a>
+                <a href="@Url.Action("ShoppingCarSubQty")?fId=@item.fId" class="btn btn-warning">-1</a>
+                <a href="@Url.Action("ShoppingCarDelete")?fId=@item.fId" class="btn btn-danger">刪除此項目</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+<h2>訂單資訊</h2>
+<form method="post" action="@Url.Action("Order")">
+    <div class="panel panel-success">
+        <div class="panel-heading">請填寫收件人資訊</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="fReceiver">收件人</label>
+                <input type="text" class="form-control" id="fReceiver" name="fReceiver" required>
+            </div>
+            <div class="form-group">
+                <label for="fReceiverPhone">收件人電話</label>
+                <input type="text" class="form-control" id="fReceiverPhone" name="fReceiverPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="fReceiverAddress">收件人住址</label>
+                <input type="text" class="form-control" id="fReceiverAddress" name="fReceiverAddress" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="訂購">
+            </div>
+        </div>
+    </div>
+</form>

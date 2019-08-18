@@ -1,0 +1,58 @@
+﻿@model IEnumerable<prjEShopping.Models.tOrder>
+
+
+
+<h2>訂單主檔</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fUId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fReceiver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fReceiverPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fReceiverAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fOrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fOrderState)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fUId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fReceiver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fReceiverPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fReceiverAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fOrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fOrderState)
+            </td>
+            <td>
+                <a href="@Url.Action("OrderDetails")?fOrderId=@item.fOrderId" class="btn btn-info">訂單明細</a>
+            </td>
+        </tr>
+    }
+
+</table>
