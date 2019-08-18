@@ -5,3 +5,5 @@ packages/
 .vs/slnEShopping/
 prjEShopping/bin/
 prjEShopping/obj/
+*.pdb
+*.dll
