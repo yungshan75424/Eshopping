@@ -2,6 +2,6 @@
 
 # 忽略 檔案
 packages/
-.vs/
-prjShopping/bin/
-prjShopping/obj/
+.vs/slnEShopping/
+/prjEShopping/bin/
+/prjEShopping/obj/
