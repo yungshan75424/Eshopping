@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         @*  <th>
@@ -57,17 +54,23 @@
         }
 
     </td>
-    <td>
-        <div class="caption">
-            <p> <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">放入購物車</a></p>
-        </div>
-    </td>
+    @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
+    {
+<td>
+    <div class="caption">
+        <p>
+            <a href="@Url.Action("ShoppingCar","Member")?fPId=@item.fPId"
+               class="btn btn-success">放入購物車</a>
+        </p>
+    </div>
+</td>
+    }
 
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.fId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.fId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.fId })
-        </td>*@
+@*<td>
+        @Html.ActionLink("Edit", "Edit", new { id=item.fId }) |
+        @Html.ActionLink("Details", "Details", new { id=item.fId }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.fId })
+    </td>*@
 </tr>
 }
 

@@ -9,12 +9,9 @@ using prjEShopping.Models;
 namespace prjEShopping.Controllers
 {
     
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
-        tEmployeeEntities db = new tEmployeeEntities();
-        // GET: Home
-        
         public ActionResult Index()
         {
             var ProductList = db.tProduct.OrderByDescending(m => m.fId).Take(8).ToList();
