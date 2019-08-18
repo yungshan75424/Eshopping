@@ -3,5 +3,5 @@
 # 忽略 檔案
 packages/
 .vs/slnEShopping/
-/prjEShopping/bin/
-/prjEShopping/obj/
+prjEShopping/bin/
+prjEShopping/obj/

@@ -25,11 +25,8 @@
                     <li>@Html.ActionLink("登入系統", "Login", "Home")</li>
                     @if (string.IsNullOrWhiteSpace(User.Identity.Name) == false)
                     {
-                        <li>
-
-                            @Html.ActionLink("修改會員資料", "MemberEdit", "Home")
-
-                        </li>
+                        <li>@Html.ActionLink("修改會員資料", "MemberEdit", "Home")</li>
+                        <li>@Html.ActionLink("登出系統", "Logout", "Member")</li>
                     }
 
 
